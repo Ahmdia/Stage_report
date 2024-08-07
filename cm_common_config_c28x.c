@@ -152,14 +152,7 @@ uint16_t pass;
 
 
 
-//
-//ADC_Interupt
-//
 
-
-//
-// Main
-//
 
 void main(void)
 {
@@ -472,13 +465,7 @@ __interrupt void cla1Isr1(void)
                  buffer_ADC_Based_Cla[3][buffer_index]=  A_Udr_pr*(float)ADC_readResult(myADC2_RESULT_BASE,myADC2_SOC2) + B_Udr_sec;
                  buffer_ADC_Based_Cla[4][buffer_index]=     A_Idr_sec*(float)ADC_readResult(myADC3_RESULT_BASE,myADC3_SOC2) + B_Idr_sec;
                  buffer_index++;
-                 /*
-                 buffer_ADC_Based_Cla[1][buffer_index]=ADC_readResult(myADC0_RESULT_BASE,myADC0_SOC2);
-                 buffer_ADC_Based_Cla[2][buffer_index]=ADC_readResult(myADC1_RESULT_BASE,myADC1_SOC2);
-                 buffer_ADC_Based_Cla[3][buffer_index]=ADC_readResult(myADC2_RESULT_BASE,myADC2_SOC2);
-                 buffer_ADC_Based_Cla[4][buffer_index]=ADC_readResult(myADC3_RESULT_BASE,myADC3_SOC2);
-*/
-
+            
      }
     ADC_clearInterruptStatus(myADC0_BASE, ADC_INT_NUMBER1);
         Interrupt_clearACKGroup(INT_myCLA01_INTERRUPT_ACK_GROUP);
@@ -510,25 +497,7 @@ __interrupt void INT_myADC0_1_ISR(void)
     Test1++;
     // Test= ADC_readResult(ADCARESULT_BASE, ADC_SOC_NUMBER5 );
        Test = ADC_readResult(myADC0_RESULT_BASE,myADC0_SOC5);
-/*
-   if(Test<=2048)
-        {
-               if(Test==2048)
-               {
-                   Angle_ADC=180;
 
-               }else{
-                   Angle_ADC=(Test*180)/2048;
-
-               }
-               Shift_ADC=(Base_origine*Angle_ADC)/180 ;
-
-        }else  if(Test>2048)
-        {
-            Angle_ADC=((Test)*180)/2048;
-            Shift_ADC=(Base_origine*Angle_ADC)/180 ;
-        }
-*/
     if(Test<=2048)
            {
         Shift_ADC=250;
@@ -549,19 +518,5 @@ __interrupt void INT_myADC0_1_ISR(void)
       //  Test1++;
 }
 
-__interrupt void INT_Phase_shift_ISR(void)
-{
-    Angle++;
-   Shift=-(Base_periode*Angle)/360 ;
 
-   //  EPWM_setPhaseShift(myEPWM1_BASE, Shift);
-   if(Angle==180)
-   {
-       Angle=0;
-   }
-   Interrupt_clearACKGroup(INT_Phase_shift_INTERRUPT_ACK_GROUP);
-}
-/*
- *
- */
 
