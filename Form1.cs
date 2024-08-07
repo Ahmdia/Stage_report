@@ -417,23 +417,3 @@ namespace GUI_Interface
         }
     }
 }
-// Convertir le tableau en une chaîne de caractères
-/*             string dataString = string.Join(", ", dataArray);
-
-             // Utiliser MethodInvoker pour éviter le cross-threading
-             this.Invoke(new MethodInvoker(delegate
-             {
-                 richTextBox2.Text += $"\nReceived data from {remoteEndPoint.Address}:{remoteEndPoint.Port}: {dataString}";
-             }));
-
-// Ajouter les données au DataGridView
-this.Invoke(new MethodInvoker(delegate
-{
-    dataGridView1.Rows.Clear(); // Effacer les lignes existantes si nécessaire
-
-    for (int i = 0; i < dataArray.Length; i++)
-    {
-        dataGridView1.Rows.Add(i, dataArray[i]); // Ajouter chaque élément dans une nouvelle ligne du DataGridView
-    }
-}));
-*/
